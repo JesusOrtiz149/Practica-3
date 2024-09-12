@@ -18,6 +18,7 @@ public class Main {
                     @Override
                     public void guardando(Alumno persona) {
                         String fecha = persona.getCURP();
+                        int edad = 0;
                         System.out.println("Nombre: "+persona.getNombre());
                         System.out.println("A. Paterno: "+persona.getApPaterno());
                         System.out.println("A. Materno: "+persona.getApMaterno());
@@ -26,12 +27,21 @@ public class Main {
                         System.out.println("Correo: "+persona.getCorreo());
                         System.out.println("Teléfono: "+persona.getTelefono());
                         System.out.println("Discapacidad: "+persona.getDiscapacidad());
-                        persona.calcularEdad(fecha);
-                        //a
+                        edad = persona.calcularEdad(fecha);
+                        System.out.println("Edad: "+edad);
+
 
 
                         Path path = Path.of("C:\\A\\Prueba.txt");
-                        String content = persona.getNombre();
+                        String content = persona.getNombre()+"\n"+
+                                         persona.getApPaterno()+"\n"+
+                                         persona.getApMaterno()+"\n"+
+                                         persona.getCURP()+"\n"+
+                                         persona.getSexo()+"\n"+
+                                         persona.getCorreo()+"\n"+
+                                         persona.getTelefono()+"\n"+
+                                         persona.getDiscapacidad()+"\n"+
+                                         edad;
                         try(FileWriter archivo = new FileWriter(path.toFile(),true)){
                             PrintWriter pw = new PrintWriter(archivo);
                             pw.println(content);
