@@ -63,7 +63,12 @@ public class Alumno{
             int mes = Integer.parseInt(txtCURP.substring(6,8));
             int dia = Integer.parseInt(txtCURP.substring(8,10));
 
-            LocalDate fechaN = LocalDate.of(year,mes,dia);
+            if (year >= 0 && year <= 20)
+                year += 2000;
+            else
+                year +=1900;
+
+          LocalDate fechaN = LocalDate.of(year,mes,dia);
             LocalDate fechaActual = LocalDate.now();
             Period edad = Period.between(fechaN,fechaActual);
 
